@@ -1,0 +1,17 @@
+<launch>
+    <rosparam>creepbot_version: 1</rosparam>
+    <node pkg="joy"
+        name="joystick_node"
+        type="joy_node" output="screen">
+        <rosparam>dev: /dev/input/js0</rosparam>
+    </node>
+    <node pkg="rosserial_python"
+        name="rosserial_node"
+        type="serial_node.py" output="screen">
+        <rosparam>port: /dev/rfcomm1</rosparam>
+        <rosparam>baud: 38400</rosparam>
+    </node>
+    <node pkg="wheebot_base"
+        name="wheebot_node" type="wheebot_joy"
+        output="screen"/>
+</launch>
