@@ -1,4 +1,4 @@
 # WheeBot
-WheeBot - Differential Drive Wheel Robot For ROS and Firmware Programming Workshops
+WheeBot - Differential Drive Wheel Robot For [ROS](https://ros.org/) and Firmware Programming Workshops
 
 <img src="wiki/wheebot.png" width="400">
