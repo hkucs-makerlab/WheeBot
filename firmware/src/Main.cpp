@@ -16,8 +16,8 @@ Encoder rightSpeedSensor(GPIO_PIN_SPEED_R);
 #ifdef __ROS__
 #include <geometry_msgs/Twist.h>
 
-#include "ROSserial.hpp"
-ros::MyNodeHandle nh;
+#include "ros.h"
+ros::NodeHandle nh;
 
 float demandx = 0;
 float demandz = 0;
