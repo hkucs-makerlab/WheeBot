@@ -2,15 +2,17 @@
 
 #include "Config.hpp"
 #include "Mobile.hpp"
+#include "Buzzer.hpp"
+
 //
 Motor motorLeft(MOTOR_LEFT_GPIO_PIN1, MOTOR_LEFT_GPIO_PIN2);
 Motor motorRight(MOTOR_RIGHT_GPIO_PIN1, MOTOR_RIGHT_GPIO_PIN2);
 Mobile mobile(motorRight, motorLeft);
-
+Buzzer buzzer(BUZZER_PIN);
 #if HAS_SPEED_SENSOR
 #include "Encoder.hpp"
-Encoder leftSpeedSensor(GPIO_PIN_SPEED_L);
-Encoder rightSpeedSensor(GPIO_PIN_SPEED_R);
+Encoder leftSpeedSensor(GPIO_PIN_SPEED_L1);
+Encoder rightSpeedSensor(GPIO_PIN_SPEED_R1);
 #endif
 
 #ifdef __ROS__
@@ -126,8 +128,10 @@ void setup() {
   Console.println("in debugging mode");
 #endif
   //
+#if HAS_SPEED_SENSOR
   leftSpeedSensor.begin();
   rightSpeedSensor.begin();
+#endif  
   //
   mobile.stop();
   //
@@ -143,5 +147,6 @@ void setup() {
   //
 
   // led.update(150);
+  buzzer.beepStart();
   Console.println("[started]");
 }
